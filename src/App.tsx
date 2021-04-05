@@ -1,17 +1,25 @@
 import React from 'react';
-import logo from './resources/LogoCV.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { CircularProgress } from '@material-ui/core'
+import Home from './pages/Home';
+import './App.css'
+
+const Dev = React.lazy(() => import('./pages/dev/Sviluppatore'));
+// const Home = React.lazy(() => import('./pages/Home'));
+// const Layout = React.lazy(() => import('./pages/layout/Layout'));
+const Photo = React.lazy(() => import('./pages/fotografia/Galleria'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Sito in costruzione
-        </p>
-      </header>
-    </div>
+    <React.Suspense fallback={<CircularProgress />}>
+      <Router>
+        {/* <Layout> */}
+          <Route exact path="/" render={() => <Home />} />
+          <Route path='/dev' render={() => <Dev />} />
+          <Route path='/photo' render={() => <Photo />} />
+        {/* </Layout> */}
+      </Router>
+    </React.Suspense>
   );
 }
 
