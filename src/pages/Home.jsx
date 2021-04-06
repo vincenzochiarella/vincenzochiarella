@@ -11,11 +11,8 @@ import Footer  from './layout/Footer'
 import { useEffect } from "react"
 
 import anime from 'animejs'
-import bg from '../resources/Bg_home.jpg'
+import bg from '../resources/p_bg.jpg'
 // import MovingFadeLetter from './layout/MovingFadedText';
-
-
-// const bg = React.lazy(() => require('../resources/Bg_home.jpg'));
 
 
 function Home (){
