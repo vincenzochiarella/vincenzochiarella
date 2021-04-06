@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 // import { DEV , FOTOGRAFIA} from '../consts/routes'
 
@@ -12,7 +12,7 @@ import { useEffect } from "react"
 
 import anime from 'animejs'
 import bg from '../resources/Bg_home.jpg'
-import MovingFadeLetter from './layout/MovingFadedText';
+// import MovingFadeLetter from './layout/MovingFadedText';
 
 
 // const bg = React.lazy(() => require('../resources/Bg_home.jpg'));
@@ -241,7 +241,7 @@ function Home (){
                                     variant="subtitle2">
                                     {/* fai swipe o clicca */}
                                     {/* <MovingFadeLetter> */}
-                                        Software Dev, student and occasionally photographer
+                                        Software Dev, student and sometimes photographer
                                     {/* </MovingFadeLetter> */}
                                 </Typography>
                             </Grid>

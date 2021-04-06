@@ -16,7 +16,7 @@ function Footer( props: any ){
             <IconButton href='MAILTO:vins14nov@outlook.it'>
                 <Mail fontSize='large' />
             </IconButton>
-            <IconButton href='https://github.com/vincenzochiarella/vincenzochiarella'>
+            <IconButton href='https://github.com/vincenzochiarella'>
                 <GitHub fontSize='large' />
             </IconButton>
         </div>
