@@ -1,17 +1,18 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
 
-import { DEV , FOTOGRAFIA} from '../consts/routes'
+// import { DEV , FOTOGRAFIA} from '../consts/routes'
 
 import { Box, Button, Grid, Typography, Container } from "@material-ui/core"
 import Footer  from './layout/Footer'
 // import { ImageBackground } from 'react'
 
-import { NavigateNext, NavigateBefore } from '@material-ui/icons'
+// import { NavigateNext, NavigateBefore } from '@material-ui/icons'
 import { useEffect } from "react"
 
 import anime from 'animejs'
 import bg from '../resources/Bg_home.jpg'
+import MovingFadeLetter from './layout/MovingFadedText';
 
 
 // const bg = React.lazy(() => require('../resources/Bg_home.jpg'));
@@ -23,10 +24,9 @@ function Home (){
     const txtRef = React.useRef()
     const vinsRef = React.useRef()
     const bgRef = React.useRef()
+    const footerRef = React.useRef()
 
-    const history = useHistory()
-
-    const allPage = anime.timeline()
+    // const history = useHistory()
 
     useEffect(()=>{
         anime({
@@ -46,32 +46,39 @@ function Home (){
         anime({
             targets: txtRef.current,
             opacity: [0, 1],
-            translateY: [200, 0],
-            duration: 4000,
-            easing: "easeInOutQuad"
+            translateY: [100, 0],
+            duration: 3000,
+            easing: "easeInOutSine"
         })
         anime({
             targets: vinsRef.current,
             opacity: [0, 1],
-            translateY: [-600, 0],
-            duration: 3000,
-            easing: "easeInOutQuad"
+            translateY: [-300, 0],
+            duration: 2000,
+            easing: "easeInOutSine"
         })
-        allPage
-            .add({
-                targets: bgRef.current,
-                duration: 1,
-                opacity: 0,
-            })
-            .add({
-                targets: bgRef.current,
-                duration: 3000,
-                opacity: 1,
-                easing: 'easeInQuad'
-            })
+        anime({
+            targets: bgRef.current,
+            duration: 1000,
+            opacity: [0,1],
+            easing: 'easeOutSine'
+        })
+        anime({
+            targets: bgRef.current,
+            duration: 2000,
+            scale: [1.3,1],
+            easing: 'easeInSine'
+        })
+        // anime({
+        //     targets: [ bgRef.current ],
+        //     duration: 2000,
+        //     scale: [1.5,1],
+        //     easing: 'easeInOutQuad'
+        // })
+
         },[])//Squared parentesis to load once
-    const [touchStart, setTouchStart] = React.useState(0);
-    const [isTouchLeft, setTouchEnd] = React.useState(0);
+    // const [touchStart, setTouchStart] = React.useState();
+    // var [touchDirection, setTouchEnd] = React.useState();
     return (
         <Box ref={bgRef}
             style={{
@@ -79,57 +86,65 @@ function Home (){
                 backgroundPosition: 'center',
                 backgroundBlendMode: 'darken',
                 backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat'
+                backgroundRepeat: 'no-repeat',
+                overflow: 'hidden'
             }}
         >
             <Container maxWidth="md" 
-                onTouchStart={tE => setTouchStart(tE.targetTouches[0].clientX)}
-                onTouchMove={tM => setTouchEnd(tM.targetTouches[0].clientX)}
-                onTouchEnd={() => {
-                    if (touchStart - touchEnd > 150) {
-                        // do your stuff here for left swipe
-                        console.log('Swipe a sinistra')
-                        anime({
-                            targets: [ bgRef.current ], 
-                            duration: 3000,
-                            translateX: '-100em',
-                            delay: 300,
-                            update: function(anim){
-                                vinsRef.current.style.filter = 'blur(' + 20 * anim.progress / 100 + 'px)'
-                                txtRef.current.style.filter = 'blur(' + 30 * anim.progress / 100 + 'px)'
-                            },
-                            complete: (a) =>{   
-                                history.push(FOTOGRAFIA)
-                            }
+                // onTouchStart={tE => setTouchStart(tE.targetTouches[0].clientX)}
+                // onTouchMove={tM => setTouchEnd(tM.targetTouches[0].clientX)}
+                // onTouchEnd={() => {
+                //     console.log("TM "+ touchDirection)
+                //     console.log("S "+ touchStart)
+                //     setTouchStart(touchDirection -1)
+                //     console.log("S1 "+ touchDirection)
+                // }}
+                    // if (touchStart - touchEnd > 150) {
+                    //     // do your stuff here for left swipe
+                    //     console.log('Swipe a sinistra')
+                    //     anime({
+                    //         targets: [ bgRef.current ], 
+                    //         duration: 3000,
+                    //         translateX: '-100em',
+                    //         delay: 300,
+                    //         update: function(anim){
+                    //             vinsRef.current.style.filter = 'blur(' + 20 * anim.progress / 100 + 'px)'
+                    //             txtRef.current.style.filter = 'blur(' + 30 * anim.progress / 100 + 'px)'
+                    //         },
+                    //         complete: (a) =>{   
+                    //             history.push(FOTOGRAFIA)
+                    //         }
                             
-                        })
+                    //     })
                         
-                    }
+                    // }
 
-                    if (touchStart - touchEnd < -150) {
-                        // do your stuff here for right swipe
-                        console.log('Swipe a destra')
-                        anime({
-                            targets: [ bgRef.current ], 
-                            duration: 3000,
-                            translateX: '100em',
-                            delay: 300,
-                            update: function(anim){
-                                vinsRef.current.style.filter = 'blur(' + 20 * anim.progress / 100 + 'px)'
-                                txtRef.current.style.filter = 'blur(' + 30 * anim.progress / 100 + 'px)'
-                            },
-                            complete: (a) =>{   
-                                history.push(DEV)
-                            }
+                //     // if (touchStart - touchEnd < -150) {
+                //         // do your stuff here for right swipe
+                //         console.log('Swipe a destra')
+                //         anime({
+                //             targets: [ bgRef.current ], 
+                //             duration: 3000,
+                //             translateX: '100em',
+                //             delay: 300,
+                //             update: function(anim){
+                //                 vinsRef.current.style.filter = 'blur(' + 20 * anim.progress / 100 + 'px)'
+                //                 txtRef.current.style.filter = 'blur(' + 30 * anim.progress / 100 + 'px)'
+                //             },
+                //             complete: (a) =>{   
+                //                 history.push(DEV)
+                //             }
                             
-                        })                   
+                //         })                   
                         
-                    }
-                }}>
+                //     }
+                // }}
+                >
                 <Box
                     width={'100%'}
                     height={'100vh'}
-                    display='flex'>
+                    display='flex'
+                    >
                     <Box m="auto">
                         <Grid
                             container
@@ -144,13 +159,13 @@ function Home (){
                                 >
                                     <Typography
                                         align='center'
-                                        variant="h4"
+                                        variant="h3"
                                     >
                                         Vincenzo Chiarella
                     </Typography>
                                 </Box>
                             </Grid>
-                            <Grid item lg={6} md={6} xs={6}>
+                            {/* <Grid item lg={6} md={6} xs={6}>
                                 <Button
                                     onMouseOver={e => {
                                         anime({
@@ -209,16 +224,28 @@ function Home (){
 
                                     />}
                                     ref={photoRef} >Foto</Button>
-                            </Grid>
+                            </Grid> */}
                             <Grid item lg={12} md={12} xs={12}>
                                 <Typography
                                     ref={txtRef}
                                     align='center'
-                                    variant="h6">
-                                    fai swipe o clicca
-                    </Typography>
+                                    variant="h5">
+                                    {/* fai swipe o clicca */}
+                                    coming soon
+                                </Typography>
                             </Grid>
                             <Grid item lg={12} md={12} xs={12}>
+                                <Typography
+                                    ref={txtRef}
+                                    align='center' 
+                                    variant="subtitle2">
+                                    {/* fai swipe o clicca */}
+                                    {/* <MovingFadeLetter> */}
+                                        Software Dev, student and occasionally photographer
+                                    {/* </MovingFadeLetter> */}
+                                </Typography>
+                            </Grid>
+                            <Grid ref={footerRef} item lg={12} md={12} xs={12}>
                                 <Footer />
                             </Grid>
                         </Grid>

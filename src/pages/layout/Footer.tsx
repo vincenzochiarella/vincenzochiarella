@@ -6,7 +6,7 @@ import { GitHub, Instagram, LinkedIn, Mail } from '@material-ui/icons'
 function Footer( props: any ){
     // const [ themeSelector, setTheme ] = useState(false);
     return (
-        <>
+        <div id='ff'>
             <IconButton href='https://www.instagram.com/vince_chiarella'>
                 <Instagram fontSize='large' />
                 </IconButton>                
@@ -19,7 +19,7 @@ function Footer( props: any ){
             <IconButton href='https://github.com/vincenzochiarella/vincenzochiarella'>
                 <GitHub fontSize='large' />
             </IconButton>
-        </>
+        </div>
     )
 }
 export default Footer
