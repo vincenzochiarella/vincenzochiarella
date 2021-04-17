@@ -30,6 +30,7 @@ function Home (){
             targets: cvRef.current,
             opacity: [0, 1],
             translateX: [-100, 0],
+            delay:1000,
             duration: 2000,
             easing: "easeInOutCubic"
         })
@@ -37,6 +38,7 @@ function Home (){
             targets: photoRef.current,
             opacity: [0, 1],
             translateX: [100, 0],
+            delay:1000,
             duration: 2000,
             easing: "easeInOutCubic"
         })
@@ -44,6 +46,7 @@ function Home (){
             targets: txtRef.current,
             opacity: [0, 1],
             translateY: [100, 0],
+            delay:1000,
             duration: 3000,
             easing: "easeInOutSine"
         })
@@ -51,11 +54,13 @@ function Home (){
             targets: vinsRef.current,
             opacity: [0, 1],
             translateY: [-300, 0],
+            delay:1000,
             duration: 2000,
             easing: "easeInOutSine"
         })
         anime({
             targets: bgRef.current,
+            delay:1000,
             duration: 1000,
             opacity: [0,1],
             easing: 'easeOutSine'
@@ -63,6 +68,7 @@ function Home (){
         anime({
             targets: bgRef.current,
             duration: 2000,
+            delay:1000,
             scale: [1.3,1],
             easing: 'easeInSine'
         })
