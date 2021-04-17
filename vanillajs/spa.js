@@ -54,7 +54,7 @@ window.onload = () =>{
     anime({
         targets: ".shootingstars .wish",
         easing: "linear",
-        // loop: true,
+        loop: true,
         delay: (el, i) => 1000 * i,
         opacity: [
           {
